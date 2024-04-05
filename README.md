@@ -1,61 +1,80 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+## Projeto Padrão: README
+O objetivo deste projeto é fornecer uma estrutura sólida para servir de base a outros projetos, mantendo-se atualizado conforme as demandas comuns solicitadas.
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+## Instalação
+Clone o repositório:
+git clone https://github.com/Artemid4s/projetopadrao.git
+Instale as dependências do Composer:
+cd projetopadrao/laradock-workspace
+composer install
+composer update
+Configure o arquivo .env com os dados de conexão do seu banco de dados e crie o banco de dados correspondente.
 
-## About Laravel
+Adicione a entrada no arquivo de hosts do seu computador:
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+127.0.0.1 projetopadrao.local
+Crie o arquivo de configuração do seu site em laradock/nginx/sites:
+Nome do arquivo: projetopadrao.conf
+Conteúdo do arquivo:
+server {
+    listen 80;
+    listen [::]:80;
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+    server_name projetopadrao.local;
+    root /var/www/projetopadrao/public;
+    index index.php index.html index.htm;
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+    location / {
+         try_files $uri $uri/ /index.php$is_args$args;
+    }
 
-## Learning Laravel
+    location ~ \.php$ {
+        try_files $uri /index.php =404;
+        fastcgi_pass php-upstream;
+        fastcgi_index index.php;
+        fastcgi_buffers 16 16k;
+        fastcgi_buffer_size 32k;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        #fixes timeouts
+        fastcgi_read_timeout 600;
+        include fastcgi_params;
+    }
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+    location ~ /\.ht {
+        deny all;
+    }
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+    location /.well-known/acme-challenge/ {
+        root /var/www/letsencrypt/;
+        log_not_found off;
+    }
 
-## Laravel Sponsors
+    error_log /var/log/nginx/laravel_error.log;
+    access_log /var/log/nginx/laravel_access.log;
+}
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+## Uso
+Este projeto serve como base para projetos futuros. Lembre-se de personalizar o nome do banco de dados, etc. Ele inclui configurações pré-definidas, como envio de formulários, envio de e-mails e listagem de objetos. Também estão instalados o Tailwind CSS e o IziToast para notificações elegantes.
 
-### Premium Partners
+É um modelo sólido para iniciar novos projetos. Bom trabalho!
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[OP.GG](https://op.gg)**
+## Exemplos
+Aqui estão alguns exemplos de uso:
 
-## Contributing
+Listagem de Banners:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Os banners são cadastrados pelo admin na aba lateral "Banners". A listagem dos banners ativos, ordenados pelo mais recente, pode ser encontrada em App/SiteController no método index.
+Listagem de Clientes:
 
-## Code of Conduct
+Suponha que você tenha criado a tabela "Clientes" com os campos id, nome, created_at e updated_at. Se a model App\Clientes não existir, crie-a. No SiteController, importe a model e crie um método para recuperar os clientes:
+use App\Clientes;
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+public function clientes()
+{
+    $clientes = Clientes::all();
+    return view('site.clientes', compact('clientes'));
+}
+Na sua view, você pode exibir os valores assim:
+@foreach($clientes as $cliente)
+    <p>{{ $cliente->nome }}</p>
+@endforeach
