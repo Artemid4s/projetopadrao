@@ -80,7 +80,7 @@
                         <textarea name="mensagem" id="mensagem" class="required" name="" id="" cols="30" rows="10" placeholder="Como podemos ajudar?"></textarea>
                     </div>
                     <div class="input-wrapper-submit">
-                        <input class="btn-submit" type="submit" value="Enviar">
+                        <input class="btn-submit" type="submit" value="Enviar"> 
                     </div>
                 </form>
             </div>
