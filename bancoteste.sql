@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: MariaDB
--- Tempo de geração: 05/04/2024 às 19:00
+-- Tempo de geração: 05/04/2024 às 20:01
 -- Versão do servidor: 10.2.32-MariaDB-1:10.2.32+maria~bionic
 -- Versão do PHP: 8.2.8
 
@@ -67,6 +67,33 @@ CREATE TABLE `categories` (
 INSERT INTO `categories` (`id`, `parent_id`, `order`, `name`, `slug`, `created_at`, `updated_at`) VALUES
 (1, NULL, 1, 'Category 1', 'category-1', '2024-04-04 20:29:48', '2024-04-04 20:29:48'),
 (2, NULL, 1, 'Category 2', 'category-2', '2024-04-04 20:29:48', '2024-04-04 20:29:48');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `configuracoesgerais`
+--
+
+CREATE TABLE `configuracoesgerais` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `favicon` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `descricaosite` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `imagemcompartilhamento` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `emailcontato` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `pixelfacebook1` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `pixelfacebook2` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `analyticsgoogle1` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `analyticsgoogle2` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `codigosexternos` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `numerowhats` int(11) DEFAULT NULL,
+  `mensageminicialwhats` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `instagram` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `facebook` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `linkedin` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `youtube` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -195,7 +222,25 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (74, 9, 'cidade', 'text', 'Cidade', 0, 1, 1, 1, 1, 1, '{}', 7),
 (75, 9, 'estado', 'text', 'Estado', 0, 1, 1, 1, 1, 1, '{}', 8),
 (76, 9, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 9),
-(77, 9, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 10);
+(77, 9, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 10),
+(78, 10, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
+(79, 10, 'favicon', 'image', 'Favicon', 0, 1, 1, 1, 1, 1, '{}', 2),
+(80, 10, 'descricaosite', 'text', 'Descrição site', 0, 1, 1, 1, 1, 1, '{}', 3),
+(81, 10, 'imagemcompartilhamento', 'image', 'Imagem Compartilhamento', 0, 0, 1, 1, 1, 1, '{}', 4),
+(82, 10, 'emailcontato', 'text', 'Email Contato', 0, 0, 1, 1, 1, 1, '{}', 5),
+(83, 10, 'pixelfacebook1', 'text', 'Pixel Facebook', 0, 0, 1, 1, 1, 1, '{}', 6),
+(84, 10, 'pixelfacebook2', 'text', 'Pixel Facebook', 0, 0, 1, 1, 1, 1, '{}', 7),
+(85, 10, 'analyticsgoogle1', 'text', 'Analytics Google', 0, 0, 1, 1, 1, 1, '{}', 8),
+(86, 10, 'analyticsgoogle2', 'text', 'Analytics Google', 0, 0, 1, 1, 1, 1, '{}', 9),
+(87, 10, 'codigosexternos', 'text', 'Codigos Externos', 0, 0, 1, 1, 1, 1, '{}', 10),
+(88, 10, 'numerowhats', 'number', 'Numero Whats', 0, 0, 1, 1, 1, 1, '{}', 11),
+(89, 10, 'mensageminicialwhats', 'text', 'Mensagem Inicial Whats', 0, 0, 1, 1, 1, 1, '{}', 12),
+(90, 10, 'instagram', 'text', 'Instagram', 0, 0, 1, 1, 1, 1, '{}', 13),
+(91, 10, 'facebook', 'text', 'Facebook', 0, 0, 1, 1, 1, 1, '{}', 14),
+(92, 10, 'linkedin', 'text', 'Linkedin', 0, 0, 1, 1, 1, 1, '{}', 15),
+(93, 10, 'youtube', 'text', 'Youtube', 0, 0, 1, 1, 1, 1, '{}', 16),
+(94, 10, 'created_at', 'timestamp', 'Created At', 0, 0, 1, 1, 0, 1, '{}', 17),
+(95, 10, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 18);
 
 -- --------------------------------------------------------
 
@@ -233,7 +278,8 @@ INSERT INTO `data_types` (`id`, `name`, `slug`, `display_name_singular`, `displa
 (5, 'posts', 'posts', 'Post', 'Posts', 'voyager-news', 'TCG\\Voyager\\Models\\Post', 'TCG\\Voyager\\Policies\\PostPolicy', '', '', 1, 0, NULL, '2024-04-04 20:29:48', '2024-04-04 20:29:48'),
 (6, 'pages', 'pages', 'Page', 'Pages', 'voyager-file-text', 'TCG\\Voyager\\Models\\Page', NULL, '', '', 1, 0, NULL, '2024-04-04 20:29:49', '2024-04-04 20:29:49'),
 (8, 'banners', 'banners', 'Banner', 'Banners', NULL, 'App\\Banner', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2024-04-05 11:50:52', '2024-04-05 11:50:52'),
-(9, 'contatos', 'contatos', 'Contato', 'Contatos', NULL, 'App\\Contato', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2024-04-05 12:25:45', '2024-04-05 12:25:45');
+(9, 'contatos', 'contatos', 'Contato', 'Contatos', NULL, 'App\\Contato', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2024-04-05 12:25:45', '2024-04-05 12:25:45'),
+(10, 'configuracoesgerais', 'configuracoesgerais', 'Configuracoesgerai', 'Configuracoesgerais', NULL, 'App\\Configuracoesgerai', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2024-04-05 19:53:49', '2024-04-05 19:58:24');
 
 -- --------------------------------------------------------
 
@@ -298,20 +344,21 @@ CREATE TABLE `menu_items` (
 
 INSERT INTO `menu_items` (`id`, `menu_id`, `title`, `url`, `target`, `icon_class`, `color`, `parent_id`, `order`, `created_at`, `updated_at`, `route`, `parameters`) VALUES
 (1, 1, 'Dashboard', '', '_self', 'voyager-boat', NULL, NULL, 1, '2024-04-04 20:29:48', '2024-04-04 20:29:48', 'voyager.dashboard', NULL),
-(2, 1, 'Media', '', '_self', 'voyager-images', NULL, NULL, 6, '2024-04-04 20:29:48', '2024-04-05 13:33:10', 'voyager.media.index', NULL),
-(3, 1, 'Users', '', '_self', 'voyager-person', NULL, NULL, 5, '2024-04-04 20:29:48', '2024-04-05 13:33:10', 'voyager.users.index', NULL),
-(4, 1, 'Roles', '', '_self', 'voyager-lock', NULL, NULL, 4, '2024-04-04 20:29:48', '2024-04-05 13:33:10', 'voyager.roles.index', NULL),
-(5, 1, 'Tools', '', '_self', 'voyager-tools', NULL, NULL, 10, '2024-04-04 20:29:48', '2024-04-05 13:33:10', NULL, NULL),
+(2, 1, 'Media', '', '_self', 'voyager-images', NULL, NULL, 7, '2024-04-04 20:29:48', '2024-04-05 19:54:12', 'voyager.media.index', NULL),
+(3, 1, 'Users', '', '_self', 'voyager-person', NULL, NULL, 6, '2024-04-04 20:29:48', '2024-04-05 19:54:12', 'voyager.users.index', NULL),
+(4, 1, 'Roles', '', '_self', 'voyager-lock', NULL, NULL, 5, '2024-04-04 20:29:48', '2024-04-05 19:54:12', 'voyager.roles.index', NULL),
+(5, 1, 'Tools', '', '_self', 'voyager-tools', NULL, NULL, 11, '2024-04-04 20:29:48', '2024-04-05 19:54:12', NULL, NULL),
 (6, 1, 'Menu Builder', '', '_self', 'voyager-list', NULL, 5, 1, '2024-04-04 20:29:48', '2024-04-05 11:33:12', 'voyager.menus.index', NULL),
 (7, 1, 'Database', '', '_self', 'voyager-data', NULL, 5, 2, '2024-04-04 20:29:48', '2024-04-05 11:33:12', 'voyager.database.index', NULL),
 (8, 1, 'Compass', '', '_self', 'voyager-compass', NULL, 5, 3, '2024-04-04 20:29:48', '2024-04-05 11:33:12', 'voyager.compass.index', NULL),
 (9, 1, 'BREAD', '', '_self', 'voyager-bread', NULL, 5, 4, '2024-04-04 20:29:48', '2024-04-05 11:33:12', 'voyager.bread.index', NULL),
-(10, 1, 'Settings', '', '_self', 'voyager-settings', NULL, NULL, 11, '2024-04-04 20:29:48', '2024-04-05 13:33:10', 'voyager.settings.index', NULL),
-(11, 1, 'Categories', '', '_self', 'voyager-categories', NULL, NULL, 9, '2024-04-04 20:29:48', '2024-04-05 13:33:10', 'voyager.categories.index', NULL),
-(12, 1, 'Posts', '', '_self', 'voyager-news', NULL, NULL, 7, '2024-04-04 20:29:48', '2024-04-05 13:33:10', 'voyager.posts.index', NULL),
-(13, 1, 'Pages', '', '_self', 'voyager-file-text', NULL, NULL, 8, '2024-04-04 20:29:49', '2024-04-05 13:33:10', 'voyager.pages.index', NULL),
-(15, 1, 'Banners', '', '_self', 'voyager-images', '#000000', NULL, 2, '2024-04-05 11:50:52', '2024-04-05 11:51:14', 'voyager.banners.index', 'null'),
-(16, 1, 'Contatos', '', '_self', 'voyager-chat', '#000000', NULL, 3, '2024-04-05 12:25:45', '2024-04-05 13:33:10', 'voyager.contatos.index', 'null');
+(10, 1, 'Settings', '', '_self', 'voyager-settings', NULL, NULL, 12, '2024-04-04 20:29:48', '2024-04-05 19:54:12', 'voyager.settings.index', NULL),
+(11, 1, 'Categories', '', '_self', 'voyager-categories', NULL, NULL, 10, '2024-04-04 20:29:48', '2024-04-05 19:54:12', 'voyager.categories.index', NULL),
+(12, 1, 'Posts', '', '_self', 'voyager-news', NULL, NULL, 8, '2024-04-04 20:29:48', '2024-04-05 19:54:12', 'voyager.posts.index', NULL),
+(13, 1, 'Pages', '', '_self', 'voyager-file-text', NULL, NULL, 9, '2024-04-04 20:29:49', '2024-04-05 19:54:12', 'voyager.pages.index', NULL),
+(15, 1, 'Banners', '', '_self', 'voyager-images', '#000000', NULL, 3, '2024-04-05 11:50:52', '2024-04-05 19:54:17', 'voyager.banners.index', 'null'),
+(16, 1, 'Contatos', '', '_self', 'voyager-chat', '#000000', NULL, 4, '2024-04-05 12:25:45', '2024-04-05 19:54:12', 'voyager.contatos.index', 'null'),
+(17, 1, 'Configurações gerais', '', '_self', 'voyager-settings', '#000000', NULL, 2, '2024-04-05 19:53:49', '2024-04-05 19:56:56', 'voyager.configuracoesgerais.index', 'null');
 
 -- --------------------------------------------------------
 
@@ -466,7 +513,12 @@ INSERT INTO `permissions` (`id`, `key`, `table_name`, `created_at`, `updated_at`
 (52, 'read_contatos', 'contatos', '2024-04-05 12:25:45', '2024-04-05 12:25:45'),
 (53, 'edit_contatos', 'contatos', '2024-04-05 12:25:45', '2024-04-05 12:25:45'),
 (54, 'add_contatos', 'contatos', '2024-04-05 12:25:45', '2024-04-05 12:25:45'),
-(55, 'delete_contatos', 'contatos', '2024-04-05 12:25:45', '2024-04-05 12:25:45');
+(55, 'delete_contatos', 'contatos', '2024-04-05 12:25:45', '2024-04-05 12:25:45'),
+(56, 'browse_configuracoesgerais', 'configuracoesgerais', '2024-04-05 19:53:49', '2024-04-05 19:53:49'),
+(57, 'read_configuracoesgerais', 'configuracoesgerais', '2024-04-05 19:53:49', '2024-04-05 19:53:49'),
+(58, 'edit_configuracoesgerais', 'configuracoesgerais', '2024-04-05 19:53:49', '2024-04-05 19:53:49'),
+(59, 'add_configuracoesgerais', 'configuracoesgerais', '2024-04-05 19:53:49', '2024-04-05 19:53:49'),
+(60, 'delete_configuracoesgerais', 'configuracoesgerais', '2024-04-05 19:53:49', '2024-04-05 19:53:49');
 
 -- --------------------------------------------------------
 
@@ -533,7 +585,12 @@ INSERT INTO `permission_role` (`permission_id`, `role_id`) VALUES
 (52, 1),
 (53, 1),
 (54, 1),
-(55, 1);
+(55, 1),
+(56, 1),
+(57, 1),
+(58, 1),
+(59, 1),
+(60, 1);
 
 -- --------------------------------------------------------
 
@@ -735,6 +792,12 @@ ALTER TABLE `categories`
   ADD KEY `categories_parent_id_foreign` (`parent_id`);
 
 --
+-- Índices de tabela `configuracoesgerais`
+--
+ALTER TABLE `configuracoesgerais`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Índices de tabela `contatos`
 --
 ALTER TABLE `contatos`
@@ -870,6 +933,12 @@ ALTER TABLE `categories`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT de tabela `configuracoesgerais`
+--
+ALTER TABLE `configuracoesgerais`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de tabela `contatos`
 --
 ALTER TABLE `contatos`
@@ -879,13 +948,13 @@ ALTER TABLE `contatos`
 -- AUTO_INCREMENT de tabela `data_rows`
 --
 ALTER TABLE `data_rows`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
 
 --
 -- AUTO_INCREMENT de tabela `data_types`
 --
 ALTER TABLE `data_types`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de tabela `failed_jobs`
@@ -903,7 +972,7 @@ ALTER TABLE `menus`
 -- AUTO_INCREMENT de tabela `menu_items`
 --
 ALTER TABLE `menu_items`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de tabela `migrations`
@@ -921,7 +990,7 @@ ALTER TABLE `pages`
 -- AUTO_INCREMENT de tabela `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- AUTO_INCREMENT de tabela `posts`
