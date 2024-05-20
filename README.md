@@ -58,7 +58,9 @@ Este projeto serve como base para projetos futuros. Lembre-se de personalizar o 
 
 Também tem alguns testes básicos que incluem as views padrões do projeto, testa os métodos padrões e a conexão com o banco.
 
-Criado local pra que fique mais fácil inserir as keys do recaptcha, também criei um método que deve ser responsável por válidar o recaptcha de todos os forms
+Criado local pra que fique mais fácil inserir as keys do recaptcha, também criei um método que deve ser responsável por válidar o recaptcha de todos os forms.
+
+Doc complementar de boas práticas: https://github.com/jcezarms/Front-End-Checklist?tab=readme-ov-file
 
 É um modelo sólido para iniciar novos projetos. Bom trabalho!
 
