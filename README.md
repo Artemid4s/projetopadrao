@@ -56,6 +56,10 @@ server {
 ## Uso
 Este projeto serve como base para projetos futuros. Lembre-se de personalizar o nome do banco de dados, etc. Ele inclui configurações pré-definidas, como envio de formulários, envio de e-mails e listagem de objetos. Também estão instalados o Tailwind CSS e o IziToast para notificações elegantes.
 
+Também tem alguns testes básicos que incluem as views padrões do projeto, testa os métodos padrões e a conexão com o banco.
+
+Criado local pra que fique mais fácil inserir as keys do recaptcha, também criei um método que deve ser responsável por válidar o recaptcha de todos os forms
+
 É um modelo sólido para iniciar novos projetos. Bom trabalho!
 
 ## Exemplos
