@@ -7,8 +7,8 @@
             <h2>Fale conosco</h2>
             <nav>
                 <ul>
-                    <li><a href="#">Inicial</a></li>
-                    <li><a href="#" class="active">Fale conosco</a></li>
+                    <li><a href="{{ route('site.index') }}">Inicial</a></li>
+                    <li><a href="{{ route('site.contato') }}" class="active">Fale conosco</a></li>
                 </ul>
             </nav>
         </div>
@@ -81,6 +81,7 @@
                         <textarea name="mensagem" id="mensagem" class="required" name="" id="" cols="30" rows="10" placeholder="Como podemos ajudar?"></textarea>
                     </div>
                     <div class="input-wrapper-submit">
+                        <div class="g-recaptcha" data-sitekey="{{ config('recaptcha.public_key') }}"></div>
                         <input class="btn-submit" type="submit" value="Enviar"> 
                     </div>
                 </form>
