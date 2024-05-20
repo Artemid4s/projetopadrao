@@ -1,4 +1,5 @@
-@extends('template')
+@extends('template', ['title' => 'Contato'])
+
 <link href="{{ asset('iziToast-master/dist/css/iziToast.min.css') }}" rel="stylesheet">
 @section('conteudo-site')
     <section class="s-breadcrumbs">

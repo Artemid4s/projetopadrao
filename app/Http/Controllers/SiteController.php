@@ -54,7 +54,6 @@ class SiteController extends Controller
     {   
         try {
             $criarContato = Contato::create($request->all());
-
             //Envia Email de Contato
             $subject = 'Seu Site - Contato Pelo Site';
             $emails = explode(';', setting('site.email_contato'));

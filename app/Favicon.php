@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 
-class Configuracoesgerai extends Model
+class Favicon extends Model
 {
     
 }

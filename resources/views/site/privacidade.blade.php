@@ -1,4 +1,4 @@
-@extends('template')
+@extends('template', ['title' => 'Privacidade'])
 
 @section('conteudo-site')
 

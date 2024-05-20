@@ -15,6 +15,8 @@ use App\Http\Controllers\SiteController;
 |
 */
 
+Route::get('/sitemap.xml', [SitemapXmlController::class, 'index']);  
+
 Route::prefix('/')->name('site.')->group(function () {
     Route::get('/', [SiteController::class, 'index'])->name('index');
     Route::get('/contato', [SiteController::class, 'contato'])->name('contato');
@@ -26,7 +28,10 @@ Route::prefix('/')->name('site.')->group(function () {
     Route::post('/envia-contato', [SiteController::class, 'gravaContato'])->name('envia-contato');
 });
 
-
+//redireciona para a view de erro 404
+Route::fallback(function () {
+    return view('site.error');
+});
 
 
 Route::group(['prefix' => 'admin'], function () {

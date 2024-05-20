@@ -1,4 +1,4 @@
-@extends('template')
+@extends('template', ['title' => 'Empresa'])
 
 @section('conteudo-site')
 

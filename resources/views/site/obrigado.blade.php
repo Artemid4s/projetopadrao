@@ -1,4 +1,4 @@
-@extends('template')
+@extends('template', ['title' => 'Obrigado'])
 
 @section('conteudo-site')
 
