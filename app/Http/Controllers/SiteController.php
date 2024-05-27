@@ -15,8 +15,8 @@ use App\Util\Util;
 //Métodos do Site
 class SiteController extends Controller
 {
-    public function index() {
-
+    public function index()
+    {
         $banners = Banner::where('ativo', 1)->orderBy('created_at', 'DESC')->get();
 
         return view('site.index', compact('banners'));
@@ -48,7 +48,7 @@ class SiteController extends Controller
     }
 
     public function gravaContato(Request $request)
-    {   
+    {
         try {
             // Verifica o reCAPTCHA antes de criar o contato
             $token = $request->input('g-recaptcha-response');

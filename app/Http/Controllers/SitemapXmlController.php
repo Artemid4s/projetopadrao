@@ -1,16 +1,18 @@
 <?php
+
 namespace App\Http\Controllers;
 
 class SitemapXmlController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         return response()->view('index')->header('Content-Type', 'text/xml');
-      }
+    }
 }
 
 
 //Dev pra que serve isso?
-// Um Sitemap XML é um arquivo que você coloca no seu site para informar aos mecanismos de busca (como Google, Bing, etc.) 
+// Um Sitemap XML é um arquivo que você coloca no seu site para informar aos mecanismos de busca (como Google, Bing, etc.)
 // sobre todas as páginas do seu site que eles devem rastrear e indexar.
 // Ele é especialmente útil para sites grandes, com muitas páginas ou páginas que não estão bem conectadas entre si.
 

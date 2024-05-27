@@ -6,6 +6,6 @@
 </head>
 <body>
     <h1>{{ __('errors.404_heading') }}</h1>
-    <p>{{ __('errors.404_message') }}</p>
-</body>
+    <p>{{ __('errors.404_message') }} </p> 
+</body> 
 </html>
